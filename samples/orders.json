@@ -1,0 +1,4 @@
+[
+  {"sourceId":"sample-known-001","sourceType":"text","text":"Customer: Northwind Cafe\nPO: NW-1001\nCOF-001 House Blend Coffee 1kg x 4\nTEA-002 Earl Grey Tea 100ct x 2"},
+  {"sourceId":"sample-review-001","sourceType":"email","text":"Customer: Contoso Foods\nPO: CT-2002\nTwo cases of barista oat milk please"}
+]

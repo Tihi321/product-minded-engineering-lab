@@ -1,0 +1,21 @@
+{
+  "name": "@rb2/domain",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

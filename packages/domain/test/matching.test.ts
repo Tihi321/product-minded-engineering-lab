@@ -1,0 +1,5 @@
+import { describe, expect, it } from 'vitest';
+import { matchLine, type Product, type ProductCatalog } from '../src/index.js';
+const products: Product[] = [{ sku: 'COF-001', ean: '871000000001', name: 'House Blend Coffee', unit: 'bag', aliases: ['coffee'] }, { sku: 'TEA-002', ean: '871000000002', name: 'Earl Grey Tea', unit: 'box', aliases: [] }];
+const catalog: ProductCatalog = { findBySku: s => products.find(p => p.sku === s), findByEan: e => products.find(p => p.ean === e), search: d => products.map(p => ({ product: p, confidence: p.name.toLowerCase().includes(d.toLowerCase()) ? .96 : .4, method: 'description' as const, reason: 'Token similarity' })).sort((a,b) => b.confidence-a.confidence) };
+describe('deterministic matching', () => { it('prefers exact sku/ean', () => expect(matchLine(catalog, { sku: 'COF-001', description: 'anything' }).match?.confidence).toBe(1)); it('leaves ambiguous text reviewable', () => expect(matchLine(catalog, { description: 'tea' }).alternatives.length).toBeGreaterThanOrEqual(1)); });

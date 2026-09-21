@@ -1,0 +1,21 @@
+{
+  "name": "rb2-order-intake-lab",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @rb2/api",
+    "dev:ui": "npm run dev --workspace @rb2/ui",
+    "demo": "npm run demo --workspace @rb2/api",
+    "test": "npm run build --workspace @rb2/domain && npm run test --workspaces --if-present",
+    "typecheck": "npm run build --workspace @rb2/domain && npm run typecheck --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "lambda:invoke": "npm run lambda:invoke --workspace @rb2/api",
+    "verify": "npm run typecheck && npm test && npm run build && npm run demo && npm run lambda:invoke"
+  }
+}
